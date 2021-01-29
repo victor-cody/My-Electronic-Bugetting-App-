@@ -1,0 +1,531 @@
+/* ********************
+*****General
+********************** */
+
+/*Variable Definitions*/
+:root {
+    --blue: #007bff;
+    --red: #dc3545;
+    --green: #28a745;
+    --teal: #22bd8e;
+    --white: #fff;
+    --gray: #6c757d;
+    --light-grey:hsl(210, 17%, 92%);
+    --gray-dark: #343a40;
+    --info: #17a2b8;
+    --danger: #dc3545;
+    --light: hsl(210, 17%, 96%);
+}
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--gray-dark);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 16px;
+    height: 100vh;
+    width: 100vw;
+    font-weight: 400;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+input,button,select {
+    border: none;
+    outline: none;
+    background-clip: padding-box;
+    transition: 300ms all linear;
+}
+
+select,button { cursor: pointer;}
+
+.green i{color: var(--teal);}
+.green-focus:focus {border: 1.4px solid var(--teal) !important; background:none !important ;}
+
+.red i{ color: var(--danger) !important;}
+.red-focus:focus {border: 1.2px solid var(--danger) !important; background:none !important ;}
+
+/* ********************
+Header
+********************** */
+
+.header {
+    width: 100%;
+    background:  url(../img/intro-bg.png) center bottom no-repeat;
+    background-size: cover;
+    padding: 1rem 0 3rem 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.header .container {
+    height: 100%;
+    width: 105%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.header * {color: var(--light); text-align: center;}
+
+.budget_items_container{
+    margin: 1.2rem 0 2rem;
+    display: flex;
+    flex-flow: row wrap;
+    height: 100%;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.budget_title h1,.budget_value{
+    text-transform: capitalize;
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.budget_value {
+    font-size: 2.6rem;
+    margin: 0.7rem 0;
+}
+
+.viewer {
+    width: 70%;
+    height: 2.6rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0.45rem;
+    padding: 0 0.2rem;
+    box-shadow: 0 0 26px rgba(0, 0, 0, 0.349);
+    background: var(--light) !important;
+    opacity: 0.975;
+}
+
+.viewer .right {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transform: translateX(0.8rem);
+}
+
+/* .budget_income {
+    background-color: var(--teal);
+}
+
+.budget_expenses {
+    background: var(--danger);
+} */
+
+.budget_income-text,.budget_expenses-text {
+    text-transform: uppercase;
+    color: var(--gray-dark);
+    font-weight: 500;
+}
+
+.budget_expenses-percentage {color: var(--white) !important;}
+
+.budget_income-value,.budget_expenses-value{
+    color: var(--gray-dark);
+    font-weight: 500;
+}
+
+.budget_title_month {text-transform: capitalize;}
+
+.err_msg, .err_msg_mobile{
+    color: rgb(136, 6, 6);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-style: italic;
+ }
+/* ********************
+Main
+********************** */
+.main {
+    width: 100vw;
+    position: relative;
+}
+
+.add {
+    width: 100%;
+    height: 5rem;
+    padding: .5rem;
+    opacity: 0.93;
+    background: var(--light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 5px 10px rgba(0,0,0,0.4);
+}
+
+.add_field {
+    width: 80%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+@media screen and (max-width:880px) {
+    .add {
+        width:150%;   
+    }
+    .add_field {width: 65%;}
+}
+
+.add_field * {
+    background: var(--white);
+    box-shadow: 0 0 38px rgba(0, 0, 0, 0.034);
+}
+
+.add_container {
+    width: 20%;
+}
+
+#add_type{
+    width: 100%;
+    height: 100%;
+    font-size: 1.1rem;
+    background: none;
+}
+
+#add_type:focus > option:first-of-type:checked {
+  color:  var(--green) !important;
+}
+
+#add_type:focus > option:checked {
+    color:  var(--danger) !important;
+  }
+
+.input_fields {
+    width: 78%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: transparent;
+}
+
+.input_fields input {
+    padding: 0.65rem 0.28rem;
+    font-size: 0.94rem;
+    margin: 0 0.2rem;
+    color: var(--gray-dark);
+    background: var(--white);
+    border-radius: 0.3rem;
+    transition: ease-in-out 280ms;
+}
+
+.add_description { width: 70%; text-transform: capitalize;}
+
+.add_value {width: 28%;}
+
+.add_btn {
+    width: 8%;
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.add_btn i {
+    font-size: 1.8rem;
+    transition: ease 280ms;
+}
+
+.container {
+    width: 78%;
+    margin: 1.94rem auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container > * { width: 48%;}
+
+.container h2 {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom:  0.3rem;
+    padding: 0 0.4rem 0.4rem 0;
+}
+
+.income_title {
+    color: var(--teal);
+}
+
+.expenses_title { color: var(--danger);}
+
+.income_title,.expenses_title {
+    text-align: center;
+    position: relative;
+}
+
+.income_title::before,.expenses_title::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 25rem;
+    height: 1.6px;
+    background: #ddd;
+    bottom: 1.8px;
+    left: calc(50%);
+    transform: translateX(-50%);
+}
+
+.income-list , .expenses-list {
+    list-style: none;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* text-align: center; */
+    padding: 0.5rem 0.2rem;
+    border: 2px solid var(--blue);
+    margin: 1rem 0 !important;
+    box-shadow: 1.8px 1px 10px rgba(0, 0, 0, 0.28);
+    transition: all 0.2s ease-in;
+}
+
+.item:hover, .settings_icon:hover{
+transform: translateY(1px);
+scale: 1.01;
+}
+
+/* .item:nth-of-type(2n) {
+    background: var(--light-grey);
+    background-clip: padding-box;
+} */
+
+/* .expenses-list .item:nth-of-type(2n) {
+    background: var(--gray) !important;
+} */
+
+.item_description {
+    width: 45%;
+    text-transform: capitalize;
+    padding: 0 0 0 0.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.item .right {
+    width: 42%;
+    display: flex;
+    align-items: center;
+}
+
+.income-list .item_value { width: 82%; color: var(--teal);}
+
+.item_delete { 
+    width: 18%;
+    margin: 0 0.3rem;
+    text-align: center;
+    transform: scale(1);
+     transition: 250ms ease;
+    }
+
+.item_delete button { background: none;}
+
+.item_delete i {
+    color: var(--teal);
+    font-size: 1.4rem;
+    background: transparent;
+}
+
+.expenses-list .item_delete i {
+    color: var(--danger);
+}
+
+.expenses-list .item_value { width: 82%; color: var(--danger);}
+
+.expenses-list .item .right { width:45%; }
+
+.item_percentage,.budget_expenses-percentage {
+    margin: 0.2rem;
+    color: var(--danger);
+    background: rgba(211, 11, 31, 0.527);
+    border-radius: 0.4rem;
+}
+
+.item_percentage {padding: 0.1rem 0.2rem;}
+
+.budget_expenses-percentage {padding: 0.25rem;}
+.item:hover .item_delete {
+    transform: scale(1.2);
+}
+
+
+/*Settings Overlay Styles*/
+.settings_icon{
+    position: fixed;
+    top: 5px;
+    left: 12px;
+    font-size: 3.2rem;
+    color: var(--dark-text-color);
+    background: none;
+    border: none;
+    z-index: 30;
+    transition: all 0.2s ease-in;
+  }
+
+  .settings_icon:focus, select#currency{
+    outline:none;
+  }
+  
+  .settings_body{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 20;
+    border: 4px solid var(--primary-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+  
+  .settings_body_content{
+    font-size: 1.7rem;
+    font-family: var(--primary-font);
+    margin-top: 5rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    flex-wrap: wrap;
+  }
+
+  select#currency{
+    font-size: 1.4rem;
+    height: 2.4rem;
+    width:20rem;
+    font-family: var(--secondary-font);
+    
+  }
+  
+  .usercurrency, .notification, .summary{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .summary{
+    width: 18rem;
+    height: 5rem;
+    color: white;
+    background-color: var(--dark-text-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.7rem;
+    font-family: var(--primary-font);
+    padding:1rem;
+  }
+  
+  .summary:focus , .summary:hover {
+    background-color: white;
+    border: 5px solid var(--primary-color);
+    color: var(--dark-text-color);
+    outline: none;  
+  }
+  
+  label[for="currency"]{
+    margin-right: 5px;
+  }
+  
+  .open{
+    display: block;
+    animation: open 100ms ease-in 1;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+  }
+  
+  @keyframes open{
+    from{
+      height: 0;
+      width: 0;
+    }
+    to{
+      height: 100vh;
+      width: 100vw;
+    }
+  }
+  
+  .close{
+    animation: close .2s ease-out  1;
+  }
+  
+  @keyframes close{
+    from{
+      height: 100vh;
+      width: 100vw;
+    }
+    to{
+      height: 0;
+      width:0;
+    }
+  }
+  /*class to open the inner content body*/
+  .hidden{
+    display: none;
+  }
+
+@media screen  and (max-width:896px) {
+    .add_field { width: 76%;}
+    .viewer {
+        width: 70%;
+    }
+
+    .container {
+        width: 86%;
+    }
+
+    .add_btn {
+        width: 12%;
+    }
+    
+}
+
+@media screen  and (orientation:landscape) {
+    #header {
+        height: 50vh;
+        padding-bottom: 1rem;
+    }
+}
+
+@media screen and (max-width:582px) {
+    .add_field { width: 90%;}
+    .viewer {
+        width: 150%;
+    }
+
+    .container {
+        width: 99.5%;
+    }
+
+    .container > * { width: 50%;}
+    .expenses-list .item .right {
+        width: 60%;
+    }
+    .expenses-list .item .item_description {
+        width: 40%;
+    }
+    .add_btn {
+        width: 12%;
+    }
+    .item_percentage,.budget_expenses-percentage {
+        padding: 0 0.2rem;
+        margin-left: 0.2rem;
+    }
+}
