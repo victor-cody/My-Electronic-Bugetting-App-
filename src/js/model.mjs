@@ -1,14 +1,33 @@
 //This file contains functions that define,store and control data and object models for the app. 
 
 export const appModel = (function () {  
-  //object constructor for the Input Data, both expense and income
-  class Input  { 
-    constructor(id, description, value) {
+  //object constructor for the Input Data
+    class Income { // Income Class
+      constructor(id, description, value) {
         this.id = id;
         this.description = description;
         this.value = value;
-} 
- };
+      }
+    }
+
+    class Expense { // Expense Class
+      constructor(id, description, value) {
+        this.id = id;
+        this.description = description;
+        this.value = value;
+      }
+      calcPercentage(totalIncome) {
+        if (totalIncome > 0) {
+          this.percentage = Math.round((this.value / totalIncome) * 100);
+        } else {
+          this.percentage = -1;
+        }
+      }
+
+      getPercentage() {
+        return this.percentage;
+      }
+    }
 
   //Calculate total value of each type of input in db i.e expense or income 
   const calculateTotals = async (type) => {
