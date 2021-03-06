@@ -1,0 +1,29 @@
+@mixin reset {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@mixin clearfix{
+	content: "";
+	display: table;
+	clear: both;
+}
+
+@mixin  budget-text {
+	color: $gray-dark;
+	font-weight: 500;
+}
+
+@mixin  border-none {
+	border: none;
+	outline: none;
+	background-clip: padding-box;
+	transition: 300ms all linear;
+}
+
+@mixin flex-space-around {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}

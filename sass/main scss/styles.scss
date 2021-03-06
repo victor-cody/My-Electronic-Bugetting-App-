@@ -1,0 +1,53 @@
+@import "../varables.scss";
+@import "../mixins.scss";
+
+*,
+*::before,
+*::after {
+	@include reset;
+}
+
+body {
+	color: $gray-dark;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-size: 16px;
+	// height: 100vh;
+	width: 100vw;
+	font-weight: 400;
+}
+
+.clearfix::after {
+	@include clearfix;
+}
+
+input,
+button,
+select {
+	@include border-none;
+}
+
+select,
+button {
+	cursor: pointer;
+}
+
+.green i {
+	color: var(--teal);
+}
+
+.green-focus:focus {
+	border: 1.4px solid var(--teal) !important;
+	background: none !important;
+}
+
+.red i {
+	color: var(--danger) !important;
+}
+
+.red-focus:focus {
+	border: 1.2px solid var(--danger) !important;
+	background: none !important;
+}
+
+@import "../components/header.scss";
+@import "../components/main.scss";
